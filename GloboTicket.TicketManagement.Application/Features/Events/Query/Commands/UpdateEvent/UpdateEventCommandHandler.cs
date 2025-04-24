@@ -7,7 +7,7 @@ using MediatR;
 
 namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.UpdateEvent
 {
-    public class UpdateEventCommandHandler: IRequestHandler<UpdateEventCommand>
+    public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand>
     {
         private readonly IAsyncRepository<Event> _eventRepository;
         private readonly IMapper _mapper;

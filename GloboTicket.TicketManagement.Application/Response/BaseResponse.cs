@@ -8,6 +8,7 @@ namespace GloboTicket.TicketManagement.Application.Response
         {
             Success = true;
         }
+
         public BaseResponse(string message = null)
         {
             Success = true;

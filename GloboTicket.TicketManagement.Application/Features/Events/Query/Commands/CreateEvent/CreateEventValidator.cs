@@ -6,7 +6,7 @@ using GloboTicket.TicketManagement.Application.Contracts.Persistence;
 
 namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.CreateEvent
 {
-    public class CreateEventValidator: AbstractValidator<CreateEventCommand>
+    public class CreateEventValidator : AbstractValidator<CreateEventCommand>
     {
         private readonly IEventRepository _eventRepository;
 
@@ -14,8 +14,7 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Command
         {
             _eventRepository = eventRepository;
 
-            RuleFor(p => p.Name).
-                NotEmpty().WithMessage("{PropertyName} is required.")
+            RuleFor(p => p.Name).NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters. ");
 
@@ -27,7 +26,7 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Command
             RuleFor(e => e)
                 .MustAsync(EventNameAndDateUnique)
                 .WithMessage("An Event with the same name and date already exists.");
-            
+
             RuleFor(p => p.Price)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0);
@@ -36,7 +35,7 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Command
 
         private async Task<bool> EventNameAndDateUnique(CreateEventCommand e, CancellationToken token)
         {
-            return !(await _eventRepository.IsEventNameAndDAteUnique(e.Name, e.Date));
+            return !await _eventRepository.IsEventNameAndDAteUnique(e.Name, e.Date);
         }
     }
 }

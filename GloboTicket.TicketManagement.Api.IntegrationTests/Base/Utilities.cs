@@ -1,6 +1,6 @@
-﻿using GloboTicket.TicketManagement.Domain.Entities;
+﻿using System;
+using GloboTicket.TicketManagement.Domain.Entities;
 using GloboTicket.TicketManagement.Persistence;
-using System;
 
 namespace GloboTicket.TicketManagement.API.IntegrationTests.Base
 {

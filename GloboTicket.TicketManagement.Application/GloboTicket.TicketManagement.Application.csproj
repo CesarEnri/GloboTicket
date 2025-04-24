@@ -5,34 +5,43 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GloboTicket.TicketManagement.Domain\GloboTicket.TicketManagement.Domain.csproj" />
+        <ProjectReference Include="..\GloboTicket.TicketManagement.Domain\GloboTicket.TicketManagement.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Adaaro.Consistency.Data.Messages.MediatR" Version="3.0.0" />
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
-      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-      <PackageReference Include="AWright18.SimpleCSVExporter" Version="1.0.0" />
-      <PackageReference Include="FluentValidation" Version="10.3.4" />
-      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.4" />
-      <PackageReference Include="MediatR" Version="9.0.0" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Adaaro.Consistency.Data.Messages.MediatR" Version="3.0.0"/>
+        <PackageReference Include="AutoMapper" Version="10.1.1"/>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1"/>
+        <PackageReference Include="AWright18.SimpleCSVExporter" Version="1.0.0"/>
+        <PackageReference Include="FluentValidation" Version="10.3.4"/>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.4"/>
+        <PackageReference Include="MediatR" Version="9.0.0"/>
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Orders" />
+        <Folder Include="Features\Orders"/>
+        <Folder Include="Features\ProfilesUsers\Commands\Delete\"/>
+        <Folder Include="Features\ProfilesUsers\Commands\Update\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Features\Categories\Queries\GetCategoryList\**" />
+        <Compile Remove="Features\Categories\Queries\GetCategoryList\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Features\Categories\Queries\GetCategoryList\**" />
+        <EmbeddedResource Remove="Features\Categories\Queries\GetCategoryList\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Features\Categories\Queries\GetCategoryList\**" />
+        <None Remove="Features\Categories\Queries\GetCategoryList\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.AspNetCore.Http">
+            <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.17\Microsoft.AspNetCore.Http.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

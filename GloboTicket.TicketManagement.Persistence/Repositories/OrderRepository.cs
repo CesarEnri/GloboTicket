@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GloboTicket.TicketManagement.Persistence.Repositories
 {
-    public class OrderRepository: BaseRepository<Order>, IOrderRepository
+    public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
         public OrderRepository(GloboTicketDbContext dbContext) : base(dbContext)
         {

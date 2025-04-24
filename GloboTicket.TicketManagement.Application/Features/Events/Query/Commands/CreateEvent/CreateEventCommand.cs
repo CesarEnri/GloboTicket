@@ -18,6 +18,5 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Command
             return
                 $"Event name: {Name}; Price: {Price}; By: {Artist}; On: {Date.ToShortDateString()}; Description: {Description}";
         }
-
     }
 }

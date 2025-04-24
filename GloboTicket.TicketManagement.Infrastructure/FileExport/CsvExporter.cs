@@ -6,7 +6,7 @@ using GloboTicket.TicketManagement.Infrastructure.Excel;
 
 namespace GloboTicket.TicketManagement.Infrastructure.FileExport
 {
-    public class CsvExporter: ICsvExporter
+    public class CsvExporter : ICsvExporter
     {
         public byte[] ExportEventsToCsv(List<EventExportDto> eventExportDtos)
         {

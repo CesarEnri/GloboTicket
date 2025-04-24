@@ -1,8 +1,8 @@
-﻿using GloboTicket.TicketManagement.Application.Contracts.Persistence;
+﻿using System;
+using System.Collections.Generic;
+using GloboTicket.TicketManagement.Application.Contracts.Persistence;
 using GloboTicket.TicketManagement.Domain.Entities;
 using Moq;
-using System;
-using System.Collections.Generic;
 
 namespace GloboTicket.TicketManagement.Application.UnitTests.Mocks
 {
@@ -17,22 +17,22 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Mocks
 
             var categories = new List<Category>
             {
-                new Category
+                new()
                 {
                     CategoryId = concertGuid,
                     Name = "Concerts"
                 },
-                new Category
+                new()
                 {
                     CategoryId = musicalGuid,
                     Name = "Musicals"
                 },
-                new Category
+                new()
                 {
                     CategoryId = conferenceGuid,
                     Name = "Conferences"
                 },
-                 new Category
+                new()
                 {
                     CategoryId = playGuid,
                     Name = "Plays"

@@ -1,7 +1,7 @@
-﻿using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace GloboTicket.TicketManagement.Api.Utility
 {
@@ -19,18 +19,18 @@ namespace GloboTicket.TicketManagement.Api.Utility
             operation.Responses.Add("200", new OpenApiResponse
             {
                 Content = new Dictionary<string, OpenApiMediaType>
-            {
                 {
-                    requestAttribute.ContentType, new OpenApiMediaType
                     {
-                        Schema = new OpenApiSchema
+                        requestAttribute.ContentType, new OpenApiMediaType
                         {
-                            Type = "string",
-                            Format = "binary"
+                            Schema = new OpenApiSchema
+                            {
+                                Type = "string",
+                                Format = "binary"
+                            }
                         }
                     }
                 }
-            }
             });
         }
     }

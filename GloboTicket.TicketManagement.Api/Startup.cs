@@ -1,11 +1,9 @@
 using GloboTicket.TicketManagement.Api.Utility;
 using GloboTicket.TicketManagement.Application;
-using GloboTicket.TicketManagement.Domain.Entities;
 using GloboTicket.TicketManagement.Infrastructure;
 using GloboTicket.TicketManagement.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,12 +13,12 @@ namespace GloboTicket.TicketManagement.Api
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -47,10 +45,9 @@ namespace GloboTicket.TicketManagement.Api
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "GloboTicket Ticket Management API",
-
+                    Title = "GloboTicket Ticket Management API"
                 });
-                
+
                 c.OperationFilter<FileResultContentTypeOperationFilter>();
             });
         }
@@ -59,10 +56,7 @@ namespace GloboTicket.TicketManagement.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
             app.UseRouting();
@@ -74,11 +68,8 @@ namespace GloboTicket.TicketManagement.Api
             });
 
             app.UseCors("Open");
-            
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

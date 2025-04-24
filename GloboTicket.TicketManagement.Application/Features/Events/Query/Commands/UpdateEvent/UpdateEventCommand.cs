@@ -3,7 +3,7 @@ using MediatR;
 
 namespace GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.UpdateEvent
 {
-    public class UpdateEventCommand: IRequest
+    public class UpdateEventCommand : IRequest
     {
         public Guid EventId { get; set; }
         public string Name { get; set; }

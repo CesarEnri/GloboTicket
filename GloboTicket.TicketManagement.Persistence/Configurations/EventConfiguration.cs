@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GloboTicket.TicketManagement.Persistence.Configurations
 {
-    public class EventConfiguration: IEntityTypeConfiguration<Event>
+    public class EventConfiguration : IEntityTypeConfiguration<Event>
     {
         public void Configure(EntityTypeBuilder<Event> builder)
         {

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using GloboTicket.TicketManagement.Application.Contracts.Infrastructure;
 using GloboTicket.TicketManagement.Application.Models.Mail;
 using Microsoft.Extensions.Options;
@@ -7,14 +8,14 @@ using SendGrid.Helpers.Mail;
 
 namespace GloboTicket.TicketManagement.Infrastructure.Mail
 {
-    public class EmailService: IEmailService
+    public class EmailService : IEmailService
     {
-        public EmailSettings _emailSettings { get; }
-
         public EmailService(IOptions<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }
+
+        public EmailSettings _emailSettings { get; }
 
         public async Task<bool> SendEmail(Email email)
         {
@@ -33,8 +34,8 @@ namespace GloboTicket.TicketManagement.Infrastructure.Mail
             var sendGridmessage = MailHelper.CreateSingleEmail(from, to, subject, emailBody, emailBody);
             var response = await client.SendEmailAsync(sendGridmessage);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted ||
-                response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.Accepted ||
+                response.StatusCode == HttpStatusCode.OK)
                 return true;
 
             return false;

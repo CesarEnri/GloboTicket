@@ -6,7 +6,7 @@ using GloboTicket.TicketManagement.Domain.Entities;
 
 namespace GloboTicket.TicketManagement.Persistence.Repositories
 {
-    public class EventRepository: BaseRepository<Event>, IEventRepository
+    public class EventRepository : BaseRepository<Event>, IEventRepository
     {
         public EventRepository(GloboTicketDbContext dbContext) : base(dbContext)
         {

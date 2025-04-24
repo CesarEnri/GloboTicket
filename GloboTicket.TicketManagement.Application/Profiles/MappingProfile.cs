@@ -5,13 +5,16 @@ using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCa
 using GloboTicket.TicketManagement.Application.Features.Events;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.CreateEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.UpdateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventDetail;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventExport;
 using GloboTicket.TicketManagement.Application.Features.Orders.GetOrdersForMonth;
+using GloboTicket.TicketManagement.Application.Features.ProfilesUsers.Commands.Create;
+using GloboTicket.TicketManagement.Application.Features.ProfilesUsers.Queries.GetUserPic;
 using GloboTicket.TicketManagement.Domain.Entities;
 
 namespace GloboTicket.TicketManagement.Application.Profiles
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -29,6 +32,13 @@ namespace GloboTicket.TicketManagement.Application.Profiles
             CreateMap<Category, CreateCategoryDto>();
 
             CreateMap<Order, OrdersForMonthDto>();
+
+            //Profile users
+            CreateMap<ProfileUser, CreateProfileUserDto>();
+            CreateMap<ProfileUser, GetUserPicDto>();
+
+            // DTO -> VM
+            CreateMap<GetUserPicDto, GetUserPicQueryVm>();
         }
     }
 }

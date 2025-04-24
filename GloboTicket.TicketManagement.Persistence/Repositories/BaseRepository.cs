@@ -1,9 +1,9 @@
-﻿using GloboTicket.TicketManagement.Application.Contracts.Persistence;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GloboTicket.TicketManagement.Application.Contracts.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace GloboTicket.TicketManagement.Persistence.Repositories
 {
@@ -26,11 +26,6 @@ namespace GloboTicket.TicketManagement.Persistence.Repositories
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public async virtual Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size)
-        {
-            return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
-        }
-
         public async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
@@ -49,6 +44,11 @@ namespace GloboTicket.TicketManagement.Persistence.Repositories
         {
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public virtual async Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size)
+        {
+            return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
         }
     }
 }

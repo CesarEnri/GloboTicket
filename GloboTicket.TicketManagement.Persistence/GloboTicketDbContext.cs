@@ -7,16 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GloboTicket.TicketManagement.Persistence
 {
-    public class GloboTicketDbContext: DbContext
+    public class GloboTicketDbContext : DbContext
     {
         public GloboTicketDbContext(DbContextOptions<GloboTicketDbContext> options)
-           : base(options)
+            : base(options)
         {
         }
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<ProfileUser> ProfileUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,7 +57,8 @@ namespace GloboTicket.TicketManagement.Persistence
                 Price = 65,
                 Artist = "John Egbert",
                 Date = DateTime.Now.AddMonths(6),
-                Description = "Join John for his farwell tour across 15 continents. John really needs no introduction since he has already mesmerized the world with his banjo.",
+                Description =
+                    "Join John for his farwell tour across 15 continents. John really needs no introduction since he has already mesmerized the world with his banjo.",
                 ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/banjo.jpg",
                 CategoryId = concertGuid
             });
@@ -68,7 +70,8 @@ namespace GloboTicket.TicketManagement.Persistence
                 Price = 85,
                 Artist = "Michael Johnson",
                 Date = DateTime.Now.AddMonths(9),
-                Description = "Michael Johnson doesn't need an introduction. His 25 concert across the globe last year were seen by thousands. Can we add you to the list?",
+                Description =
+                    "Michael Johnson doesn't need an introduction. His 25 concert across the globe last year were seen by thousands. Can we add you to the list?",
                 ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/michael.jpg",
                 CategoryId = concertGuid
             });
@@ -116,7 +119,8 @@ namespace GloboTicket.TicketManagement.Persistence
                 Price = 135,
                 Artist = "Nick Sailor",
                 Date = DateTime.Now.AddMonths(8),
-                Description = "The critics are over the moon and so will you after you've watched this sing and dance extravaganza written by Nick Sailor, the man from 'My dad and sister'.",
+                Description =
+                    "The critics are over the moon and so will you after you've watched this sing and dance extravaganza written by Nick Sailor, the man from 'My dad and sister'.",
                 ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/musical.jpg",
                 CategoryId = musicalGuid
             });
@@ -184,10 +188,10 @@ namespace GloboTicket.TicketManagement.Persistence
                 UserId = Guid.Parse("{7AEB2C01-FE8E-4B84-A5BA-330BDF950F5C}")
             });
         }
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
                 switch (entry.State)
                 {
                     case EntityState.Added:
@@ -197,9 +201,8 @@ namespace GloboTicket.TicketManagement.Persistence
                         entry.Entity.LastModifiedDate = DateTime.Now;
                         break;
                 }
-            }
+
             return base.SaveChangesAsync(cancellationToken);
         }
-        
     }
 }

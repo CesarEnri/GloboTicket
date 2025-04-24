@@ -11,13 +11,12 @@ using Microsoft.Extensions.Logging;
 namespace GloboTicket.TicketManagement.API.IntegrationTest.Base
 {
     public class CustomWebApplicationFactory<TStartup>
-            : WebApplicationFactory<TStartup> where TStartup : class
+        : WebApplicationFactory<TStartup> where TStartup : class
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureServices(services =>
             {
-
                 services.AddDbContext<GloboTicketDbContext>(options =>
                 {
                     options.UseInMemoryDatabase("GloboTicketDbContextInMemoryTest");
@@ -39,9 +38,12 @@ namespace GloboTicket.TicketManagement.API.IntegrationTest.Base
                     }
                     catch (Exception ex)
                     {
-                        logger.LogError(ex, $"An error occurred seeding the database with test messages. Error: {ex.Message}");
+                        logger.LogError(ex,
+                            $"An error occurred seeding the database with test messages. Error: {ex.Message}");
                     }
-                };
+                }
+
+                ;
             });
         }
 

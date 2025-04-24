@@ -21,10 +21,7 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Categories.Queries
         public GetCategoriesListQueryHandlerTests()
         {
             _mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new MappingProfile());
-            });
+            var configurationProvider = new MapperConfiguration(cfg => { cfg.AddProfile(new MappingProfile()); });
 
             _mapper = configurationProvider.CreateMapper();
         }
@@ -38,7 +35,7 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Categories.Queries
             var result = await handler.Handle(new GetCategoriesListQuery(), CancellationToken.None);
 
             result.ShouldBeOfType<List<CategoryListVm>>();
-            
+
             result.Count.ShouldBe(4);
         }
     }

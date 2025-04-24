@@ -1,7 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GloboTicket.TicketManagement.Api.Utility;
@@ -9,7 +6,11 @@ using GloboTicket.TicketManagement.Application.Features.Events;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.CreateEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.DeleteEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.UpdateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventDetail;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventExport;
+using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GloboTicket.TicketManagement.Api.Controllers
 {
@@ -36,7 +37,7 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         [HttpGet("{id}", Name = "GetEventById")]
         public async Task<ActionResult<EventDetailVm>> GetEventById(Guid id)
         {
-            var getEventDetailQuery = new GetEventDetailQuery() { Id = id };
+            var getEventDetailQuery = new GetEventDetailQuery { Id = id };
             return Ok(await _mediator.Send(getEventDetailQuery));
         }
 
@@ -63,7 +64,7 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var deleteEventCommand = new DeleteEventCommand() { EventId = id };
+            var deleteEventCommand = new DeleteEventCommand { EventId = id };
             await _mediator.Send(deleteEventCommand);
             return NoContent();
         }
@@ -73,7 +74,7 @@ namespace GloboTicket.TicketManagement.Api.Controllers
         public async Task<FileResult> ExportEvents()
         {
             var fileDto = await _mediator.Send(new GetEventsExportQuery());
-        
+
             return File(fileDto.Data, fileDto.ContentType, fileDto.EventExportFileName);
         }
     }
