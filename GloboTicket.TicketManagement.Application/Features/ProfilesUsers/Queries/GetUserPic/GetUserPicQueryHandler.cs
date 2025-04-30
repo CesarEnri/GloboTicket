@@ -7,6 +7,7 @@ using GloboTicket.TicketManagement.Domain.Entities;
 using GloboTicket.TicketManagement.Infrastructure.Excel;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace GloboTicket.TicketManagement.Application.Features.ProfilesUsers.Queries.GetUserPic
 {

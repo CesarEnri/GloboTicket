@@ -8,6 +8,7 @@ using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.De
 using GloboTicket.TicketManagement.Application.Features.Events.Query.Commands.UpdateEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventDetail;
 using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventExport;
+using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventList;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

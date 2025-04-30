@@ -6,7 +6,7 @@ using GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventDet
 using GloboTicket.TicketManagement.Domain.Entities;
 using MediatR;
 
-namespace GloboTicket.TicketManagement.Application.Features.Events
+namespace GloboTicket.TicketManagement.Application.Features.Events.Query.GetEventList
 {
     public class GetEventsListQueryHandler : IRequestHandler<GetEventDetailQuery, EventDetailVm>
     {

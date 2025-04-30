@@ -11,11 +11,11 @@ namespace GloboTicket.TicketManagement.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            //services.AddDbContext<GloboTicketDbContext>(options =>
-            //    options.UseSqlServer(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
-
             services.AddDbContext<GloboTicketDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
+
+            //services.AddDbContext<GloboTicketDbContext>(options =>
+            //    options.UseNpgsql(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
@@ -23,7 +23,9 @@ namespace GloboTicket.TicketManagement.Persistence
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProfileUserRepository, ProfileUserRepository>();
-
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
+            
             return services;
         }
     }
